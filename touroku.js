@@ -1,4 +1,4 @@
-<script src="js/touroku.html">
+<script src="js/touroku.html"></script>
 
 var address = "test123@test.com";
   var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
@@ -7,5 +7,4 @@ var address = "test123@test.com";
   } else {
     console.log("間違っている");
   }
-  
-</script>
+
