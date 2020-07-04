@@ -14,7 +14,7 @@
 .copy-container h1{
     font-size: 100px;   
 }
-button{
+.button{
     padding: 20px;
     widows: 100%;
     border:1px solid #555a5e;
