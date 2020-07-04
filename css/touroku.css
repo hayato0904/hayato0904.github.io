@@ -20,6 +20,12 @@
     border:1px solid #555a5e;
     font-size:25px;
 }
+input{
+    padding: 20px;
+    widows: 100%;
+    border:1px solid #555a5e;
+    font-size:25px;
+}
 .contents{
     border: 2px solid;
     border-color: #031de2;
