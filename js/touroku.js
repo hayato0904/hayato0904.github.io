@@ -1,10 +1,14 @@
 <script src="js/touroku.html"></script>
-document.getElementById('button').onclick = function(){
-  var address = document.getElementById('value').value;
+function logSubmit(event) {
+  var address = document.getElementById('mail');
   var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
   if (reg.test(address)) {
-    console.log("正しい");
+  alert("正しいから佐文ッとします");
   } else {
-    console.log("間違っている");
+  alert("間違ってるからキャンセルします");
+  event.preventDefault();
   }
+
 }
+const form = document.getElementById('tera');
+form.addEventListener('submit', logSubmit);
