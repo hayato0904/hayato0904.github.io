@@ -69,7 +69,6 @@
         <h1 style="background-color: black;">気になるワード</h1>
         <form name="form">
             <input name="text1" id="text1" type="text">
-            <button onClick='check()'>クリック</button>
         </form>
 
         <h1 style="background-color: black;">ログインユーザー限定項目</h1>
@@ -81,7 +80,7 @@
 
         　<p><input type="password" placeholder="現在のパスワード"></p>
 
-          <input type="submit" value="検索">
+        <p><button onClick='check()'>クリック</button></p>
 
           <p>現在、全205件中205件がヒット！</p>
     </div>
@@ -155,7 +154,7 @@
   <script>
     function check() {
         var getText = document.form.text1.value;
-        if (getText.length >= 10) {
+        if (getText.length <= 10) {
             alert("気になるワードを10文字以内で入力してください。");
         } else {
             alert("okです");
