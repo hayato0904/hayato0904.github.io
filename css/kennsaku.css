@@ -33,3 +33,9 @@ table{
 .contentsunder{
     text-align: center;
 }
+
+button{
+    padding: 20px;
+    border:1px solid #555a5e;
+    font: size 25px;
+}
