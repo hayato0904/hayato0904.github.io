@@ -24,7 +24,35 @@
           </div> 
         　 
            <p><input type="submit" value="更新"></p>
-            <p><input type="submit" value="Twitter"></p>
+            
+           　　　　　　<div class="contents">
+            <form id="tera">
+            <h1 style="background-color: black;">新規登録</h1>
+            <p>新規登録するメールアドレス</p>
+            <input type="email" name="mail" placeholder="新規登録するメールアドレス">
+            <p>新規登録するパスワード</p>
+            <input type ="password" placeholder="8文字以上のパスワード">
+            <p>新規パスワード確認</p>
+            <input type ="password"placeholder="新規パスワード確認">
+            <p>同じパスワードでないと登録されません。</p>
+            <p><button onclick="return confirm('記入された内容を送信します。よろしいでしょうか？')">新規登録</button></p>
+            <p>※テストユーザーは変更されません</p>
+      
+            <h1 style="background-color:black;">登録情報削除 or 変更</h1>
+            <p>現在のメールアドレス</p>
+            <input placeholder="登録済みのメールアドレス">
+            <p>現在のパスワード</p>
+            <input placeholder="登録済みのパスワード">
+            <p>橋本環奈（テスト）さんの登録情報をすべて削除します。一度削除した場合、データの復元はできませんが、よろしいでしょうか？</p>
+            <p><button onclick="return confirm('登録情報を削除します。よろしいでしょうか？')">削除する</button></p>
+            <p><button onclick="return confirm('登録情報を変更します。よろしいでしょうか？')">変更する</button></p>
+            <p>※テストユーザーは削除 or 変更されません。</p>
+          </form>
+          </div>        
+
+
+
+
           　　　　　 <table border="1" width="80%" bordercolor="#green" bgcolor="#f5f5f5">
             <tr bgcolor="deepskyblue">
                 <td>ユーザー名</td>
