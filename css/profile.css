@@ -32,8 +32,7 @@ input{
 .contents{
     border: 2px solid;
     border-color: #031de2;
-    font-size: 25px;
-    color: white;
+   
 }
 button{
     padding:20px;
@@ -42,4 +41,8 @@ button{
     width:400px;
     border:1px solid #446a7e;
     font-size:18px;
+}
+.contents h2{
+    font-size: 25px;
+    color: white;
 }
