@@ -46,4 +46,10 @@ button{
         float:left; 
         padding:20px 40px; 
     }
-    
+    .contents h1{
+        font-size: 25px;
+        color: white;
+    }
+    .contents p{
+        font-size: 25px;
+    }
