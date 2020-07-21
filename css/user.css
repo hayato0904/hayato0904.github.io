@@ -1,23 +1,5 @@
 @charset "UTF-8";
-.header{
-    background-color:#91a09b; 
-    height: 90px;
-}
-.header-logo{
-    font-size: 40px;
-    float:left;
-    padding:20px 40px;
-}
-.main{
-    text-align: center;
-}
-.copy-container h1{
-    font-size: 100px;   
-}
-img{
-    width: 400px;
-    height: auto;
-}
+
 table{
     margin-left: auto;margin-right: auto;
 }
@@ -33,3 +15,5 @@ input{
     border: 2px solid;
     border-color: #031de2;
 }
+.main{
+    text-align: center;}
