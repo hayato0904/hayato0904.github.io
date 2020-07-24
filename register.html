@@ -26,7 +26,7 @@
 
     <div class="copy-container">
 
-      <h1>新規登録 or 登録情報変更</h1>
+      <h1>新規登録 登録情報削除 or 変更 ＆ ログイン</h1>
 
     </div>
 
@@ -66,10 +66,22 @@
 
       <input placeholder="登録済みのパスワード">
 
-      <p><button onclick="return confirm('登録情報を削除します。よろしいでしょうか？')">削除する</button></>
+      <p><button onclick="return confirm('登録情報を削除します。よろしいでしょうか？')">削除する</button></p>
 
       <p><button onclick="return confirm('登録情報を変更します。よろしいでしょうか？')">変更する</button></p>
 
+      <h1 style="background-color: black;">ログイン</h1>
+
+      <p>ログインするメールアドレス</p>
+
+      <input type="email" name="mail" placeholder="登録済みのメールアドレス">
+
+      <p>ログインするパスワード</p>
+
+      <input type ="password" placeholder="登録済みのパスワード">
+
+      <p><button onclick="return confirm('ログインします。自己プロフィールを編集できます。')">ログイン</button></p>
+      <p><button onclick="return confirm('ログアウトします。')">ログアウト</button></p>
     </form>
 
     </div>        
