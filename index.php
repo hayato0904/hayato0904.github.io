@@ -29,7 +29,7 @@ $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
   <head>
     <link rel="stylesheet" type="text/css" href="/css/search.css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>テスト用表示画面</title>
+    <title>ユーザー詳細情報画面</title>
   </head>
   <body>
     <h1>テスト用表示画面</h1>
@@ -99,12 +99,6 @@ $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
         </tr>
         <tr>
             <td><?php echo htmlspecialchars($aryList['target'],ENT_QUOTES,'UTF-8'); ?></td>  
-        </tr>
-        <tr bgcolor="deepskyblue">
-            <td>自己紹介</td>
-        </tr>
-        <tr>
-            <td><?php echo htmlspecialchars($aryList['self_introduction'],ENT_QUOTES,'UTF-8'); ?></td>  
         </tr>
         <tr bgcolor="deepskyblue">
             <td>自己紹介</td>
