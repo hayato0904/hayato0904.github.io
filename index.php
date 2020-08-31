@@ -55,7 +55,7 @@ $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
         </tr>
         <tr>
             <td>
-           <? if($aryList['language_php'] == 'php'){
+           <?php if($aryList['language_php'] == 'php'){
 } ?>
             </td>
         </tr> 
