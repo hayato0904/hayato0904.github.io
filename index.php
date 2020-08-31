@@ -55,40 +55,9 @@ $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
         </tr>
         <tr>
             <td>
-             php if($aryList['language_html']){
-echo htmlspecialchars($aryList['language_html'].',',ENT_QUOTES,'UTF-8')
-}; 
-             php if($aryList['language_css']){
-echo htmlspecialchars($aryList['language_css'].',',ENT_QUOTES,'UTF-8')
-}; 
-             php if($aryList['language_javasprict']){
-echo htmlspecialchars($aryList['language_ruby'].',',ENT_QUOTES,'UTF-8')
-}; 
-             php if($aryList['language_ruby']){
-echo htmlspecialchars($aryList['language_ruby'].',',ENT_QUOTES,'UTF-8')
-}; 
-             php if($aryList['language_python']){
-echo htmlspecialchars($aryList['language_python'].',',ENT_QUOTES,'UTF-8')
-}; 
-             php if($aryList['language_java']){
-echo htmlspecialchars($aryList['language_java'].',',ENT_QUOTES,'UTF-8')
-}; 
-             php if($aryList['language_go']){
-echo htmlspecialchars($aryList['language_go'].',',ENT_QUOTES,'UTF-8')
-}; 
-             php if($aryList['language_sql']){
-echo htmlspecialchars($aryList['language_sql'].',',ENT_QUOTES,'UTF-8')
-}; 
-           <? php if($aryList['language_php']){
-echo htmlspecialchars($aryList['language_php'].',',ENT_QUOTES,'UTF-8')
-}; ?> 
-             php if($aryList['language_c']){
-echo htmlspecialchars($aryList['language_c'].',',ENT_QUOTES,'UTF-8')
-}; 
-              php if($aryList['language_c++']){
-echo htmlspecialchars($aryList['language_c++'].',',ENT_QUOTES,'UTF-8')
-}; 
-            </td>  
+           <? if($aryList['language_php'] == 'php'){
+} ?>
+            </td>
         </tr> 
         <tr bgcolor="deepskyblue">
             <td>実務経験歴</td>
