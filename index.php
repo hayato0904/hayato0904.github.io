@@ -55,8 +55,17 @@ $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
         </tr>
         <tr>
             <td>
-           <?php if($aryList['language_php'] == 'php'){
-} ?>
+            <?php echo htmlspecialchars($aryList['language_html'].' ',ENT_QUOTES,'UTF-8'); ?>
+            <?php echo htmlspecialchars($aryList['language_css'].' ',ENT_QUOTES,'UTF-8'); ?>
+            <?php echo htmlspecialchars($aryList['language_php'].' ',ENT_QUOTES,'UTF-8'); ?>
+            <?php echo htmlspecialchars($aryList['language_javasprict'].' ',ENT_QUOTES,'UTF-8'); ?>
+            <?php echo htmlspecialchars($aryList['language_ruby'].' ',ENT_QUOTES,'UTF-8'); ?>
+            <?php echo htmlspecialchars($aryList['language_python'].' ',ENT_QUOTES,'UTF-8'); ?>
+            <?php echo htmlspecialchars($aryList['language_java'].' ',ENT_QUOTES,'UTF-8'); ?>
+            <?php echo htmlspecialchars($aryList['language_go'].' ',ENT_QUOTES,'UTF-8'); ?>
+            <?php echo htmlspecialchars($aryList['language_sql'].' ',ENT_QUOTES,'UTF-8'); ?>
+            <?php echo htmlspecialchars($aryList['language_c'].' ',ENT_QUOTES,'UTF-8'); ?>
+            <?php echo htmlspecialchars($aryList['language_c++'].' ',ENT_QUOTES,'UTF-8'); ?>
             </td>
         </tr> 
         <tr bgcolor="deepskyblue">
@@ -76,13 +85,13 @@ $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
         </tr>
         <tr>
             <td>
-                <?php echo htmlspecialchars($aryList['you_hope_age_dont_worry'].',',ENT_QUOTES,'UTF-8'); ?>
-                <?php echo htmlspecialchars($aryList['you_hope_age_10s'].',',ENT_QUOTES,'UTF-8'); ?>
-                <?php echo htmlspecialchars($aryList['you_hope_age_early20s'].',',ENT_QUOTES,'UTF-8'); ?>
-                <?php echo htmlspecialchars($aryList['you_hope_age_late20s'].',',ENT_QUOTES,'UTF-8'); ?>
-                <?php echo htmlspecialchars($aryList['you_hope_age_early30s'].',',ENT_QUOTES,'UTF-8'); ?>
-                <?php echo htmlspecialchars($aryList['you_hope_age_late30s'].',',ENT_QUOTES,'UTF-8'); ?>
-                <?php echo htmlspecialchars($aryList['you_hope_age_40s'].',',ENT_QUOTES,'UTF-8'); ?>
+                <?php echo htmlspecialchars($aryList['you_hope_age_dont_worry'].' ',ENT_QUOTES,'UTF-8'); ?>
+                <?php echo htmlspecialchars($aryList['you_hope_age_10s'].' ',ENT_QUOTES,'UTF-8'); ?>
+                <?php echo htmlspecialchars($aryList['you_hope_age_early20s'].' ',ENT_QUOTES,'UTF-8'); ?>
+                <?php echo htmlspecialchars($aryList['you_hope_age_late20s'].' ',ENT_QUOTES,'UTF-8'); ?>
+                <?php echo htmlspecialchars($aryList['you_hope_age_early30s'].' ',ENT_QUOTES,'UTF-8'); ?>
+                <?php echo htmlspecialchars($aryList['you_hope_age_late30s'].' ',ENT_QUOTES,'UTF-8'); ?>
+                <?php echo htmlspecialchars($aryList['you_hope_age_40s'].' ',ENT_QUOTES,'UTF-8'); ?>
             </td>  
         </tr> 
         <tr bgcolor="deepskyblue">
