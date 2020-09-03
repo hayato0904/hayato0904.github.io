@@ -33,7 +33,9 @@ $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
   </head>
   <body>
     <h1>テスト用表示画面</h1>
- 
+    <?php 
+    $food = $_POST['food'];
+    ?>
     <?php 
     foreach($aryList as $aryList){
     ?> 
@@ -117,7 +119,8 @@ $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
     <?php 
     } 
     ?>
- 
+    
+    
 </table>
   </body>
 </html>
