@@ -1,12 +1,13 @@
 @charset "UTF-8";
 .header{
-    background-color:#91a09b; 
-    height: 90px;
+    background-color:#e4e007; 
+    height: 140px;
 }
 .header-logo{
     font-size: 40px;
     float:left;
     padding:20px 40px;
+    color:black;
 }
 .main{
     text-align: center;
