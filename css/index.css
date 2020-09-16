@@ -3,7 +3,7 @@
     background-color:#e4e007; 
     height: 140px;
     border: black;
-    border: solid;
+    border: 4px solid;
 }
 .header-logo{
     font-size: 40px;
