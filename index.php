@@ -8,8 +8,6 @@ $dbh = new PDO($dsn,$user,$password);
  
 $sql = "SELECT * FROM user";
  
-$result = $dbh -> query($sql);
- 
 //クエリー失敗
 if(!$result) {
 	echo $dbh->error;
