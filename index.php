@@ -7,6 +7,8 @@ $password = 'Ha09041208!';
 $dbh = new PDO($dsn,$user,$password);
  
 $sql = "SELECT * FROM user";
+
+$result = $dbh -> query($sql);
  
 //クエリー失敗
 if(!$result) {
