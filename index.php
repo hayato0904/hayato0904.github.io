@@ -1,123 +1,73 @@
-<?php
- 
-//データベース接続
-$dsn = 'mysql:dbname=user;host=localhost';
-$user = 'root';
-$password = 'Ha09041208!';
-$dbh = new PDO($dsn,$user,$password);
- 
-$sql = "SELECT * FROM user";
-
-$result = $dbh -> query($sql);
- 
-//クエリー失敗
-if(!$result) {
-	echo $dbh->error;
-	exit();
-}
- 
-//レコード件数
-$row_cnt = $result->rowCount();
- 
-///連想配列で取得
-$sth = $dbh -> query($sql);
-$aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
-?>
-​
-​
+<!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="/css/search.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>ユーザー詳細情報画面</title>
-  </head>
-  <body>
-    <h1>テスト用表示画面</h1>
- 
-    <?php 
-    foreach($aryList as $aryList){
-    ?> 
-    <table border="1" width="80%" bordercolor="#green" bgcolor="#f5f5f5">
-        <tr bgcolor="deepskyblue">
-         <td>ユーザ名</td>
-        </tr>
-        <tr>
-         <td><?php echo htmlspecialchars($aryList['user_name'],ENT_QUOTES,'UTF-8'); ?></td>
-        </tr>
-        <tr bgcolor="deepskyblue">
-            <td>希望する活動場所</td>
-        </tr>
-        <tr>
-            <td><?php echo htmlspecialchars($aryList['place'],ENT_QUOTES,'UTF-8'); ?></td>  
-        </tr> 
-        <tr bgcolor="deepskyblue">
-            <td>使用できるプログラミング言語</td>
-        </tr>
-        <tr>
-            <td>
-            <?php echo htmlspecialchars($aryList['language_html'].' ',ENT_QUOTES,'UTF-8'); ?>
-            <?php echo htmlspecialchars($aryList['language_css'].' ',ENT_QUOTES,'UTF-8'); ?>
-            <?php echo htmlspecialchars($aryList['language_php'].' ',ENT_QUOTES,'UTF-8'); ?>
-            <?php echo htmlspecialchars($aryList['language_javasprict'].' ',ENT_QUOTES,'UTF-8'); ?>
-            <?php echo htmlspecialchars($aryList['language_ruby'].' ',ENT_QUOTES,'UTF-8'); ?>
-            <?php echo htmlspecialchars($aryList['language_python'].' ',ENT_QUOTES,'UTF-8'); ?>
-            <?php echo htmlspecialchars($aryList['language_java'].' ',ENT_QUOTES,'UTF-8'); ?>
-            <?php echo htmlspecialchars($aryList['language_go'].' ',ENT_QUOTES,'UTF-8'); ?>
-            <?php echo htmlspecialchars($aryList['language_sql'].' ',ENT_QUOTES,'UTF-8'); ?>
-            <?php echo htmlspecialchars($aryList['language_c'].' ',ENT_QUOTES,'UTF-8'); ?>
-            <?php echo htmlspecialchars($aryList['language_c++'].' ',ENT_QUOTES,'UTF-8'); ?>
-            </td>
-        </tr> 
-        <tr bgcolor="deepskyblue">
-            <td>実務経験歴</td>
-        </tr>
-        <tr>
-            <td><?php echo htmlspecialchars($aryList['work_experience'],ENT_QUOTES,'UTF-8'); ?></td>  
-        </tr> 
-        <tr bgcolor="deepskyblue">
-            <td>自分の年齢</td>
-        </tr>
-        <tr>
-            <td><?php echo htmlspecialchars($aryList['my_age'],ENT_QUOTES,'UTF-8'); ?></td>  
-        </tr> 
-        <tr bgcolor="deepskyblue">
-            <td>相手の希望年齢</td>
-        </tr>
-        <tr>
-            <td>
-                <?php echo htmlspecialchars($aryList['you_hope_age_dont_worry'].' ',ENT_QUOTES,'UTF-8'); ?>
-                <?php echo htmlspecialchars($aryList['you_hope_age_10s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                <?php echo htmlspecialchars($aryList['you_hope_age_early20s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                <?php echo htmlspecialchars($aryList['you_hope_age_late20s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                <?php echo htmlspecialchars($aryList['you_hope_age_early30s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                <?php echo htmlspecialchars($aryList['you_hope_age_late30s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                <?php echo htmlspecialchars($aryList['you_hope_age_40s'].' ',ENT_QUOTES,'UTF-8'); ?>
-            </td>  
-        </tr> 
-        <tr bgcolor="deepskyblue">
-            <td>目標</td>
-        </tr>
-        <tr>
-            <td><?php echo htmlspecialchars($aryList['target'],ENT_QUOTES,'UTF-8'); ?></td>  
-        </tr>
-        <tr bgcolor="deepskyblue">
-            <td>自己紹介</td>
-        </tr>
-        <tr>
-            <td><?php echo htmlspecialchars($aryList['self_introduction'],ENT_QUOTES,'UTF-8'); ?></td>  
-        </tr>
-        <tr bgcolor="deepskyblue">
-            <td>Twitter</td>
-        </tr>
-        <tr>
-            <td><?php echo htmlspecialchars($aryList['twitter'],ENT_QUOTES,'UTF-8'); ?></td>  
-        </tr>
-    <br>
-    </table>
-    <?php 
-    } 
-    ?>
- 
-</table>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>Progate</title>
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+<body>
+  <div class="header">
+    <div class="header-left">Progate</div>
+    <div class="header-right">
+      <ul>
+        <li>会社概要</li>
+        <li>採用</li>
+        <li class="selected">お問い合わせ</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="contact-form">
+      <div class="form-title">お問い合わせ</div>
+      <form method="post" action="sent.php">
+        <div class="form-item">名前</div>
+        <input type="text" name="name">
+
+        <div class="form-item">年齢</div>
+        <select name="age">
+          <option value="未選択">選択してください</option>
+          <!-- for文を用いて6歳から100歳までをoptionで選べるようにしましょう -->
+          <?php 
+             for ($i = 6; $i <= 100; $i++) {            
+             echo "<option value='{$i}'>{$i}</option>";            
+} 
+          ?>
+        </select>
+
+        <div class="form-item">お問い合わせの種類</div>
+        <?php 
+          $types = array('Progateに関するお問い合わせ', 'Progateに対する意見', '採用に関するお問い合わせ', '取材・メディア関連のお問い合わせ', '料金に関するお問い合わせ', 'その他');
+         ?>
+        <!-- この下にselectタグを書いていきましょう -->
+        <select name="category">
+  <option value="未選択">選択してください</option>
+  <?php
+    foreach ($types as $type) {
+      echo "<option value='{$type}'>{$type}</option>";
+    }
+  ?>
+</select>
+        
+        <div class="form-item">内容</div>
+        <textarea name="body"></textarea>
+
+        <input type="submit" value="送信">
+      </form>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <div class="footer-left">
+      <ul>
+        <li>会社概要</li>
+        <li>採用</li>
+        <li>お問い合わせ</li>
+      </ul>
+    </div>
+    <div class="like-box">
+      <iframe src="https://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FProgate%2F742679992421539&amp;show_faces=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:300px;" allowTransparency="true"></iframe>
+    </div>
+  </div>
+</body>
 </html>
