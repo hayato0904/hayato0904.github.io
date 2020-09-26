@@ -26,6 +26,8 @@
     }
   ?>
 </select>
+
+<input type="submit" value="送信">
         
         <h1 style="background-color: black;">実務経験歴</h1>
         <input type ="text">
