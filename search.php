@@ -13,28 +13,19 @@
         <div class="form-item">活動場所（複数回答可）</div>
         <input type="text" name="name">
     
-        <h1 style="background-color: black;">使用できるプログラミング言語（複数選択化）</h1> 
-        <label for="check1">HTML</label>
-        <input type="checkbox" id="check1">
-        <label for="check1">CSS</label>
-        <input type="checkbox" id="check1">
-        <label for="check1">JavaScript</label>
-        <input type="checkbox" id="check1">
-        <label for="check1">Ruby</label>
-        <input type="checkbox" id="check1">
-        <label for="check1">Python</label>
-        <input type="checkbox" id="check1">
-        <label for="check1">Java</label>
-        <input type="checkbox" id="check1">
-        <label for="check1">Go</label>
-        <input type="checkbox" id="check1">
-        <label for="check1">SQL</label>
-        <input type="checkbox" id="check1">
-        <label for="check1">PHP</label>
-        <input type="checkbox" id="check1">
-        <label for="check1">C言語</label>
-        <input type="checkbox" id="check1">
-        <label for="check1">C++</label>
+        <div class="form-item">使用できるプログラミング言語（複数選択化）</div>
+        <?php 
+          $types = array('HTML', 'CSS', 'JavaScript', 'Ruby', 'Python', 'Java','Go','SQL','PHP','C言語','C++');
+         ?>
+        <!-- この下にselectタグを書いていきましょう -->
+        <select name="category">
+  <option value="未選択">選択してください</option>
+  <?php
+    foreach ($types as $type) {
+      echo "<option value='{$type}'>{$type}</option>";
+    }
+  ?>
+</select>
         
         <h1 style="background-color: black;">実務経験歴</h1>
         <input type ="text">
