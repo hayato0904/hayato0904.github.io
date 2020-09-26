@@ -5,16 +5,13 @@
   <title>エンジニアマッチングサイト</title>
  </head>
 <body>
-  <div class="header">
-    <div class="header-logo">エンジニアマッチング</div>
-  </div>
-  <div class="main">
-    <div class="copy-container">
-      <h1>検索画面</h1>
-    </div>
-    <div class="contentsmain">
-        <h1 style="background-color: black;">活動場所（複数回答可）</h1>
-        <input type ="text" name="name">
+
+　　 <div class="main">
+    <div class="contact-form">
+      <div class="form-title">検索画面</div>
+      <form method="post" action="sent.php">
+        <div class="form-item">活動場所（複数回答可）</div>
+        <input type="text" name="name">
     
         <h1 style="background-color: black;">使用できるプログラミング言語（複数選択化）</h1> 
         <label for="check1">HTML</label>
