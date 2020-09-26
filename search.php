@@ -9,7 +9,7 @@
 　　 <div class="main">
     <div class="contact-form">
       <div class="form-title">検索画面</div>
-      <form method="post" action="sent.php">
+      <form method="post" action="index.php">
         <div class="form-item">活動場所（複数回答可）</div>
         <input type="text" name="name">
     
