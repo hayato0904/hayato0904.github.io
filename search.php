@@ -30,24 +30,51 @@
 <input type="submit" value="送信">
         
         <h1 style="background-color: black;">実務経験歴</h1>
-        <input type ="text">
+
+        <input type="checkbox" name="experience" value="0" $keiken=1>
+        <label>未経験</label>
+
+        <input type="checkbox" name="experience" value="1" $keiken=1>
+        <label>1年目</label>
+
+        <input type="checkbox" name="experience" value="2" $keiken=1>
+        <label>2年目</label>
+
+        <input type="checkbox" name="experience" value="3" $keiken=1>
+        <label>3年目</label>
+
+        <input type="checkbox" name="experience" value="4" $keiken=1>
+        <label>4年目</label>
+
+        <input type="checkbox" name="experience" value="5" $keiken=1>
+        <label>5年以上</label>
+
+
         <h1 style="background-color: black;">相手の年齢</h1>
-        <input type="checkbox" id="check1">
-        <label for="check1">こだわらない</label>
-        <input type="checkbox" id="check1">
-        <label for="check1">10代</label>
-        <input type="checkbox" id="check1">
-        <label for="check1">20代前半</label>
-        <input type="checkbox" id="check1">
-        <label for="check1">20代後半</label>
-        <input type="checkbox" id="check1">
-        <label for="check1">30代前半</label>
-        <input type="checkbox" id="check1">
-        <label for="check1">30代後半</label>
-        <input type="checkbox" id="check1">
-        <label for="check1">40代以上</label>
+
+        <input type="checkbox" name="check" value="0">
+        <label>こだわらない</label>
+
+        <input type="checkbox" name="check" value="1">
+        <label>10代</label>
+
+        <input type="checkbox" name="check" value="2">
+        <label>20代前半</label>
+
+        <input type="checkbox" name="check" value="3">
+        <label>20代後半</label>
+
+        <input type="checkbox" name="check" value="4">
+        <label>30代前半</label>
+
+        <input type="checkbox" name="check" value="5">
+        <label>30代後半</label>
+
+        <input type="checkbox" name="check" value="6">
+        <label>40代以上</label>
+
         <h1 style="background-color: black;">その他</h1>
-        <input type="checkbox" id="check1">
+        <input type="checkbox" name="check1">
         <label for="check1">プロフィール画像がある</label>
         <h1 style="background-color: black;">気になるワード</h1>
         <form name="form">
@@ -65,8 +92,7 @@
       <?php 
       for ($i = 6; $i <= 100; $i++) {            
       echo "<option value='{$i}'>{$i}</option>";            
-} 
-   ?>
+      } ?>
  </select>
 
 
@@ -143,6 +169,7 @@
             alert("気になるメッセージを10文字以内で入力してください。");
         }
     }
+
 </script>
 </body>
 </html> 
