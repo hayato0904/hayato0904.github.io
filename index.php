@@ -99,6 +99,15 @@ if(isset($_POST['check'])){
     $A=-100;
     $B=100;
 }
+
+if (isset($_POST['language'])){
+    echo $_POST['language'];
+    $language=$_POST['language'];
+    echo $language;
+    if($language==0){
+     echo htmlspecialchars($aryList['language_html'].' ',ENT_QUOTES,'UTF-8'); 
+    }
+}
 ?>
 
 
@@ -114,7 +123,8 @@ if(isset($_POST['check'])){
         <h1>テスト用表示画面</h1>
         <?php foreach($aryList as $aryList){
             if($aryList['work_experience']>=$C&&$aryList['work_experience']<$D){
-                if($aryList['my_age']>=$A&&$aryList['my_age']<=$B){ ?>
+                if($aryList['my_age']>=$A&&$aryList['my_age']<=$B){
+                    if($aryList['language_html']) ?>
 
                     <table border="1" width="80%" bordercolor="#green" bgcolor="#f5f5f5">
                         <tr bgcolor="deepskyblue">

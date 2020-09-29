@@ -13,40 +13,63 @@
         <div class="form-item">活動場所（複数回答可）</div>
         <input type="text" name="name">
     
-        <div class="form-item">使用できるプログラミング言語（複数選択化）</div>
-        <?php 
-          $types = array('HTML', 'CSS', 'JavaScript', 'Ruby', 'Python', 'Java','Go','SQL','PHP','C言語','C++');
-         ?>
-        <!-- この下にselectタグを書いていきましょう -->
-        <select name="category">
-  <option value="未選択">選択してください</option>
-  <?php
-    foreach ($types as $type) {
-      echo "<option value='{$type}'>{$type}</option>";
-    }
-  ?>
-</select>
+        <h1 style="background-color: black;">使用できるプログラミング言語</h1>
+
+        <input type="checkbox" name="language" value="0">
+        <label>HTML</label>
+
+        <input type="checkbox" name="language" value="1">
+        <label>CSS</label>
+
+        <input type="checkbox" name="language" value="2">
+        <label>JaVaScript</label>
+
+        <input type="checkbox" name="language" value="3">
+        <label>Ruby</label>
+
+        <input type="checkbox" name="language" value="4">
+        <label>Python</label>
+
+        <input type="checkbox" name="language" value="5">
+        <label>Java</label>
+       
+        <input type="checkbox" name="language" value="6">
+        <label>Go</label>
+
+        <input type="checkbox" name="language" value="7">
+        <label>SQL</label>
+        
+        <input type="checkbox" name="language" value="8">
+        <label>PHP</label>
+
+        <input type="checkbox" name="language" value="9">
+        <label>C言語</label>
+
+        <input type="checkbox" name="language" value="10">
+        <label>C++</label>
+
+        
 
 <input type="submit" value="送信">
         
         <h1 style="background-color: black;">実務経験歴</h1>
 
-        <input type="checkbox" name="experience" value="0" $keiken=1>
+        <input type="checkbox" name="experience" value="0">
         <label>未経験</label>
 
-        <input type="checkbox" name="experience" value="1" $keiken=1>
+        <input type="checkbox" name="experience" value="1">
         <label>1年目</label>
 
-        <input type="checkbox" name="experience" value="2" $keiken=1>
+        <input type="checkbox" name="experience" value="2">
         <label>2年目</label>
 
-        <input type="checkbox" name="experience" value="3" $keiken=1>
+        <input type="checkbox" name="experience" value="3">
         <label>3年目</label>
 
-        <input type="checkbox" name="experience" value="4" $keiken=1>
+        <input type="checkbox" name="experience" value="4">
         <label>4年目</label>
 
-        <input type="checkbox" name="experience" value="5" $keiken=1>
+        <input type="checkbox" name="experience" value="5">
         <label>5年以上</label>
 
 
@@ -83,7 +106,7 @@
       　<button type="button" onclick="location.href='http://localhost/index.php'">検索</button>
 
           <p>現在、全205件中205件がヒット！</p>
-    </div>
+    </>
 
     <div class="form-item">年齢</div>
     <select name="age">
