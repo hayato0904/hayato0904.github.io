@@ -101,7 +101,7 @@ if(isset($_POST['check'])){
 }
 
 echo $_POST['language'];
-
+echo gettype($language);
 
 if (isset($_POST['language'])){
     $language=$_POST['language'];
