@@ -27,9 +27,9 @@ $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
 <?php
 
 if (isset($_POST['experience'])){
-    echo $_POST['experience'];
+    //echo $_POST['experience'];
     $experience=$_POST['experience'];
-    echo $experience;
+    //echo $experience;
     $C=0;
     $D=0;
     if($experience==0){
@@ -62,9 +62,9 @@ if (isset($_POST['experience'])){
 }
 
 if(isset($_POST['check'])){
-    echo $_POST['check'];
+    //echo $_POST['check'];
     $check=$_POST['check'];
-    echo $check;
+    //echo $check;
     $A=0;
     $B=0;
     if($check==0){
@@ -100,15 +100,48 @@ if(isset($_POST['check'])){
     $B=100;
 }
 
+echo $_POST['language'];
+
+
 if (isset($_POST['language'])){
-    echo $_POST['language'];
     $language=$_POST['language'];
     echo $language;
     if($language==0){
-     echo htmlspecialchars($aryList['language_html'].' ',ENT_QUOTES,'UTF-8'); 
+        $E='language_html';
     }
-}
-?>
+    if($language==1){
+        $E='language_css';
+    }
+    if($language==2){
+        $E='language_javasprict';
+    }
+    if($language==3){
+        $E='language_ruby';
+    }
+    if($language==4){
+        $E='language_python';
+    }
+    if($language==5){
+        $E='language_java';
+    }
+    if($language==6){
+        $E='language_go';
+    }
+    if($language==7){
+        $E='language_sql';
+    }
+    if($language==8){
+        $E='language_php';
+    }
+    if($language==9){
+        $E='language_c';
+    }
+    if($language==10){
+        $E='language_c++';
+    }
+}else{
+    $E=0;
+} ?>
 
 
 
@@ -124,8 +157,8 @@ if (isset($_POST['language'])){
         <?php foreach($aryList as $aryList){
             if($aryList['work_experience']>=$C&&$aryList['work_experience']<$D){
                 if($aryList['my_age']>=$A&&$aryList['my_age']<=$B){
-                    if($aryList['language_html']) ?>
-
+                    if($E==0){
+                    ?>
                     <table border="1" width="80%" bordercolor="#green" bgcolor="#f5f5f5">
                         <tr bgcolor="deepskyblue">
                             <td>ユーザ名</td>
@@ -201,8 +234,11 @@ if (isset($_POST['language'])){
                         <tr>
                             <td><?php echo htmlspecialchars($aryList['twitter'],ENT_QUOTES,'UTF-8'); ?></td>  
                         </tr>
+                        <br>
+                    </br>
                     </table>
-                    <?php } 
+                    <?php }
+                    }
                     }
                     } ?>
                     <div class="form-item">■ 名前</div>

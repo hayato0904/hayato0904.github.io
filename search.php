@@ -22,7 +22,7 @@
         <label>CSS</label>
 
         <input type="checkbox" name="language" value="2">
-        <label>JaVaScript</label>
+        <label>JavaScript</label>
 
         <input type="checkbox" name="language" value="3">
         <label>Ruby</label>
