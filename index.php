@@ -25,7 +25,7 @@ $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <?php
-
+//　実務経験歴
 if (isset($_POST['experience'])){
     //echo $_POST['experience'];
     $experience=$_POST['experience'];
@@ -60,7 +60,7 @@ if (isset($_POST['experience'])){
     $C=-100;
     $D=100;
 }
-
+//　相手の年齢
 if(isset($_POST['check'])){
     //echo $_POST['check'];
     $check=$_POST['check'];
@@ -99,9 +99,9 @@ if(isset($_POST['check'])){
     $A=-100;
     $B=100;
 }
-
+//　104は変更箇所　実行結果は特に何も返ってこない
 echo $_POST['language'];
-echo gettype($language);
+gettype($_POST['language']);
 
 if (isset($_POST['language'])){
     $language=$_POST['language'];
