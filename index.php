@@ -1,5 +1,5 @@
 <?php
- 
+// To Do WHERE
 //データベース接続
 $dsn = 'mysql:dbname=user;host=localhost';
 $user = 'root';
@@ -99,13 +99,13 @@ if(isset($_POST['check'])){
     $A=-100;
     $B=100;
 }
-//　104は変更箇所　実行結果は特に何も返ってこない
-echo $_POST['language'];
-gettype($_POST['language']);
+//　103,104行目を削除
+//echo $_POST['language'];
+//echo gettype($_POST['language']);
 
 if (isset($_POST['language'])){
     $language=$_POST['language'];
-    echo $language;
+    //echo $language;
     if($language==0){
         $E='language_html';
     }
@@ -139,6 +139,7 @@ if (isset($_POST['language'])){
     if($language==10){
         $E='language_c++';
     }
+    echo $E;
 }else{
     $E=0;
 } ?>
@@ -153,95 +154,99 @@ if (isset($_POST['language'])){
         <title>ユーザー詳細情報画面</title>
     </head>
     <body>
-        <h1>テスト用表示画面</h1>
-        <?php foreach($aryList as $aryList){
-            if($aryList['work_experience']>=$C&&$aryList['work_experience']<$D){
-                if($aryList['my_age']>=$A&&$aryList['my_age']<=$B){
-                    if($E==0){
-                    ?>
-                    <table border="1" width="80%" bordercolor="#green" bgcolor="#f5f5f5">
-                        <tr bgcolor="deepskyblue">
-                            <td>ユーザ名</td>
-                        </tr>
-                        <tr>
-                            <td><?php echo htmlspecialchars($aryList['user_name'],ENT_QUOTES,'UTF-8'); ?></td>
-                        </tr>
-                        <tr bgcolor="deepskyblue">
-                            <td>希望する活動場所</td>
-                        </tr>
-                        <tr>
-                            <td><?php echo htmlspecialchars($aryList['place'],ENT_QUOTES,'UTF-8'); ?></td>  
-                        </tr> 
-                        <tr bgcolor="deepskyblue">
-                            <td>使用できるプログラミング言語</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <?php echo htmlspecialchars($aryList['language_html'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                <?php echo htmlspecialchars($aryList['language_css'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                <?php echo htmlspecialchars($aryList['language_php'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                <?php echo htmlspecialchars($aryList['language_javasprict'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                <?php echo htmlspecialchars($aryList['language_ruby'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                <?php echo htmlspecialchars($aryList['language_python'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                <?php echo htmlspecialchars($aryList['language_java'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                <?php echo htmlspecialchars($aryList['language_go'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                <?php echo htmlspecialchars($aryList['language_sql'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                <?php echo htmlspecialchars($aryList['language_c'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                <?php echo htmlspecialchars($aryList['language_c++'].' ',ENT_QUOTES,'UTF-8'); ?>
-                            </td>
-                        </tr> 
-                        <tr bgcolor="deepskyblue">
-                            <td>実務経験歴</td>
-                        </tr>
-                        <tr>
-                            <td><?php echo htmlspecialchars($aryList['work_experience'],ENT_QUOTES,'UTF-8'); ?></td>  
-                        </tr> 
-                        <tr bgcolor="deepskyblue">
-                            <td>自分の年齢</td>
-                        </tr>
-                        <tr>
-                            <td><?php echo htmlspecialchars($aryList['my_age'],ENT_QUOTES,'UTF-8'); ?></td>  
-                        </tr> 
-                        <tr bgcolor="deepskyblue">
-                            <td>相手の希望年齢</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <?php echo htmlspecialchars($aryList['you_hope_age_dont_worry'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                <?php echo htmlspecialchars($aryList['you_hope_age_10s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                <?php echo htmlspecialchars($aryList['you_hope_age_early20s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                <?php echo htmlspecialchars($aryList['you_hope_age_late20s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                <?php echo htmlspecialchars($aryList['you_hope_age_early30s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                <?php echo htmlspecialchars($aryList['you_hope_age_late30s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                <?php echo htmlspecialchars($aryList['you_hope_age_40s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                            </td>  
-                        </tr> 
-                        <tr bgcolor="deepskyblue">
-                            <td>目標</td>
-                        </tr>
-                        <tr>
-                            <td><?php echo htmlspecialchars($aryList['target'],ENT_QUOTES,'UTF-8'); ?></td>  
-                        </tr>
-                        <tr bgcolor="deepskyblue">
-                            <td>自己紹介</td>
-                        </tr>
-                        <tr>
-                            <td><?php echo htmlspecialchars($aryList['self_introduction'],ENT_QUOTES,'UTF-8'); ?></td>  
-                        </tr>
-                        <tr bgcolor="deepskyblue">
-                            <td>Twitter</td>
-                        </tr>
-                        <tr>
-                            <td><?php echo htmlspecialchars($aryList['twitter'],ENT_QUOTES,'UTF-8'); ?></td>  
-                        </tr>
-                        <br>
-                    </br>
-                    </table>
-                    <?php }
-                    }
-                    }
-                    } ?>
-                    <div class="form-item">■ 名前</div>
-                    <?php echo $_POST['name']; ?>
-                </body>
-                </html>
+    <h1>テスト用表示画面</h1>
+    <?php foreach($aryList as $item){
+        // 一行下のコメントの変数$itemでデータベースからlanguage_htmlから取得している。
+        // echo $item['language_html'];       
+        // langauge_htmlの値がある場合の人のみ取得する。　そのため、下記はnullじゃないものを取得している。
+        if($item['language_html'] != null){
+            echo 'htmlは表示されています。';
+            ?>
+
+
+                        <table border="1" width="80%" bordercolor="#green" bgcolor="#f5f5f5">
+             <tr bgcolor="deepskyblue">
+                 <td>ユーザ名</td>
+             </tr>
+             <tr>
+                 <td><?php echo htmlspecialchars($item['user_name'],ENT_QUOTES,'UTF-8'); ?></td>
+             </tr>
+             <tr bgcolor="deepskyblue">
+                 <td>希望する活動場所</td>
+             </tr>
+             <tr>
+                 <td><?php echo htmlspecialchars($item['place'],ENT_QUOTES,'UTF-8'); ?></td>  
+             </tr> 
+             <tr bgcolor="deepskyblue">
+                 <td>使用できるプログラミング言語</td>
+             </tr>
+             <tr>
+                 <td>
+                     <?php echo htmlspecialchars($item['language_html'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['language_css'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['language_php'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['language_javasprict'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['language_ruby'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['language_python'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['language_java'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['language_go'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['language_sql'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['language_c'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['language_c++'].' ',ENT_QUOTES,'UTF-8'); ?>
+                 </td>
+             </tr> 
+             <tr bgcolor="deepskyblue">
+                 <td>実務経験歴</td>
+             </tr>
+             <tr>
+                 <td><?php echo htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8'); ?></td>  
+             </tr> 
+             <tr bgcolor="deepskyblue">
+                 <td>自分の年齢</td>
+             </tr>
+             <tr>
+                 <td><?php echo htmlspecialchars($item['my_age'],ENT_QUOTES,'UTF-8'); ?></td>  
+             </tr> 
+             <tr bgcolor="deepskyblue">
+                 <td>相手の希望年齢</td>
+             </tr>
+             <tr>
+                 <td>
+                     <?php echo htmlspecialchars($item['you_hope_age_dont_worry'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['you_hope_age_10s'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['you_hope_age_early20s'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['you_hope_age_late20s'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['you_hope_age_early30s'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['you_hope_age_late30s'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['you_hope_age_40s'].' ',ENT_QUOTES,'UTF-8'); ?>
+                 </td>  
+             </tr> 
+             <tr bgcolor="deepskyblue">
+                 <td>目標</td>
+             </tr>
+             <tr>
+                 <td><?php echo htmlspecialchars($item['target'],ENT_QUOTES,'UTF-8'); ?></td>  
+             </tr>
+             <tr bgcolor="deepskyblue">
+                 <td>自己紹介</td>
+             </tr>
+             <tr>
+                 <td><?php echo htmlspecialchars($item['self_introduction'],ENT_QUOTES,'UTF-8'); ?></td>  
+             </tr>
+             <tr bgcolor="deepskyblue">
+                 <td>Twitter</td>
+             </tr>
+             <tr>
+                 <td><?php echo htmlspecialchars($item['twitter'],ENT_QUOTES,'UTF-8'); ?></td>  
+             </tr>
+             <br>
+             </br>
+             </table>
+             <?php } else{}
+        }
+    
+            ?> 
+    <div class="form-item">■ 名前</div>
+    <?php echo $_POST['name']; ?>
+    </body>
+    </html>
