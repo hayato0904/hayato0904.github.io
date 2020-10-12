@@ -1,29 +1,23 @@
 <?php
 // To Do WHERE
 //データベース接続
-$dsn = 'mysql:dbname=user;host=localhost';
+$dsn = 'mysql:dbname=kakemachi;host=localhost';
 $user = 'root';
 $password = 'Ha09041208!';
 $dbh = new PDO($dsn,$user,$password);
-
 $sql = "SELECT * FROM user";
-
 $result = $dbh -> query($sql);
- 
 //クエリー失敗
 if(!$result) {
     echo $dbh->error;
     exit();
 }
- 
 //レコード件数
 $row_cnt = $result->rowCount();
-
 ///連想配列で取得
 $sth = $dbh -> query($sql);
 $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
 ?>
-
 <?php
 //　実務経験歴
 if (isset($_POST['experience'])){
@@ -32,29 +26,24 @@ if (isset($_POST['experience'])){
     //echo $experience;
     $C=0;
     $D=0;
+    $targetexperiecnce = null;
     if($experience==0){
-        $C=$C+0;
-        $D=$D+1;
+        $targetexperiecnce = '未経験';
     }
     if($experience==1){
-        $C=$C+1;
-        $D=$D+2;
+        $targetexperiecnce = '1年目';
     }
     if($experience==2){
-        $C=$C+2;
-        $D=$D+3;
+        $targetexperiecnce = '2年目';
     }
     if($experience==3){
-        $C=$C+3;
-        $D=$D+4;
+        $targetexperiecnce = '3年目';
     }
     if($experience==4){
-        $C=$C+4;
-        $D=$D+5;
+        $targetexperiecnce = '4年目';
     }
     if($experience==5){
-        $C=$C+5;
-        $D=$D+101;
+        $targetexperiecnce = '5年以上';
     }
 }else{
     $C=-100;
@@ -102,7 +91,6 @@ if(isset($_POST['check'])){
 //　103,104行目を削除
 //echo $_POST['language'];
 //echo gettype($_POST['language']);
-
 if (isset($_POST['language'])){
     $language=$_POST['language'];
     //echo $language;
@@ -139,14 +127,10 @@ if (isset($_POST['language'])){
     if($language==10){
         $E='language_c++';
     }
-    echo $E;
+    // echo $E;
 }else{
     $E=0;
 } ?>
-
-
-
-​
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/css/search.css">
@@ -156,15 +140,26 @@ if (isset($_POST['language'])){
     <body>
     <h1>テスト用表示画面</h1>
     <?php foreach($aryList as $item){
+        
+    //    echo htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8') == '3年'; 
+    //    echo htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8'); 
+
+    //    htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8') // 3年
+
         // 一行下のコメントの変数$itemでデータベースからlanguage_htmlから取得している。
         // echo $item['language_html'];       
         // langauge_htmlの値がある場合の人のみ取得する。　そのため、下記はnullじゃないものを取得している。
-        if($item['language_html'] != null){
-            echo 'htmlは表示されています。';
+        $result = true;        
+        if($E !== 0){
+            $result = $item[$E] != null; // エラー文 Notice: Undefined index: language_java in C:\xampp\htdocs\index.php on line 154
+        }
+
+        if($result){
+            // if else($item[$E == 0]){}
+            // echo 'htmlは表示されています。';
             ?>
-
-
-                        <table border="1" width="80%" bordercolor="#green" bgcolor="#f5f5f5">
+            
+                        <table border="1" width="80%" bordercolor="#green" bgcolor="#F5F5F5">
              <tr bgcolor="deepskyblue">
                  <td>ユーザ名</td>
              </tr>
@@ -188,11 +183,11 @@ if (isset($_POST['language'])){
                      <?php echo htmlspecialchars($item['language_javasprict'].' ',ENT_QUOTES,'UTF-8'); ?>
                      <?php echo htmlspecialchars($item['language_ruby'].' ',ENT_QUOTES,'UTF-8'); ?>
                      <?php echo htmlspecialchars($item['language_python'].' ',ENT_QUOTES,'UTF-8'); ?>
-                     <?php echo htmlspecialchars($item['language_java'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <!-- <?php echo htmlspecialchars($item['language_java'].' ',ENT_QUOTES,'UTF-8'); ?>
                      <?php echo htmlspecialchars($item['language_go'].' ',ENT_QUOTES,'UTF-8'); ?>
                      <?php echo htmlspecialchars($item['language_sql'].' ',ENT_QUOTES,'UTF-8'); ?>
                      <?php echo htmlspecialchars($item['language_c'].' ',ENT_QUOTES,'UTF-8'); ?>
-                     <?php echo htmlspecialchars($item['language_c++'].' ',ENT_QUOTES,'UTF-8'); ?>
+                     <?php echo htmlspecialchars($item['language_c++'].' ',ENT_QUOTES,'UTF-8'); ?> -->
                  </td>
              </tr> 
              <tr bgcolor="deepskyblue">
@@ -242,7 +237,14 @@ if (isset($_POST['language'])){
              <br>
              </br>
              </table>
-             <?php } else{}
+             <?php } 
+            //  else{ echo "htmlではない";}
+            //  //　下の行は、langauge_cssを取得するために書く。htmlのelse文の後に書くことにより、if文を分けられる。
+            //  if($item['language_css'] != null){
+            //     echo 'cssは取得できています。';}
+            //       //　下記はlangauge_javasprictの取得を行う。
+            //       if($item['language_javasprict'] != null){
+            //         echo 'cssは取得できています。';}
         }
     
             ?> 
