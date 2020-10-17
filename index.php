@@ -175,7 +175,6 @@ if (isset($_POST['text1'])){
         if($E !== 0){
             $result = $item[$E] != null; // エラー文 Notice: Undefined index: language_java in C:\xampp\htdocs\index.php on line 154
         }
-
         $keywordResult = true;
         if(strpos($item['target'],$keyword) === false){　//含まれていない場合、if文の中を実行する。
             //自己紹介のなかに$keywordが含まれてない場合

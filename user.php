@@ -1,4 +1,7 @@
 <?php
+// To Do WHEREを使って動かしたい
+// To Do ラジオボタンで単一選択する。　→　チェックボックスで複数選択する。
+
 //データベース接続
 $dsn = 'mysql:dbname=kakemachi;host=localhost';
 $user = 'root';
@@ -17,6 +20,133 @@ $row_cnt = $result->rowCount();
 $sth = $dbh -> query($sql);
 $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
 ?>
+<?php
+//　実務経験歴
+if (isset($_POST['experience'])){
+    //echo $_POST['experience'];
+    $experience=$_POST['experience'];
+    //echo $experience;
+    $C=0;
+    $D=0;
+    if($experience==0){
+        $C=$C+0;
+        $D=$D+1;
+    }
+    if($experience==1){
+        $C=$C+1;
+        $D=$D+2;
+    }
+    if($experience==2){
+        $C=$C+2;
+        $D=$D+3;
+    }
+    if($experience==3){
+        $C=$C+3;
+        $D=$D+4;
+    }
+    if($experience==4){
+        $C=$C+4;
+        $D=$D+5;
+    }
+    if($experience==5){
+        $C=$C+5;
+        $D=$D+101;
+    }
+}else{
+    $C=-100;
+    $D=100;
+}
+//　相手の年齢
+if(isset($_POST['check'])){
+    //echo $_POST['check'];
+    $check=$_POST['check'];
+    //echo $check;
+    $A=0;
+    $B=0;
+    if($check==0){
+        $A=$A+0;
+        $B=$B+100;
+    }
+    if($check==1){
+        $A=$A+10;
+        $B=$B+19;
+    }
+    if($check==2){
+        $A=$A+20;
+        $B=$B+25;
+    }
+    if($check==3){
+        $A=$A+26;
+        $B=$B+29;
+    }
+    if($check==4){
+        $A=$A+30;
+        $B=$B+35;
+    }
+    if($check==5){
+        $A=$A+36;
+        $B=$B+39;
+    }
+    if($check==6){
+        $A=$A+40;
+        $B=$B+100;
+    }
+}else{
+    $A=-100;
+    $B=100;
+}
+//　103,104行目を削除
+//echo $_POST['language'];
+//echo gettype($_POST['language']);
+if (isset($_POST['language'])){
+    $language=$_POST['language'];
+    //echo $language;
+    if($language==0){
+        $E='language_html';
+    }
+    if($language==1){
+        $E='language_css';
+    }
+    if($language==2){
+        $E='language_javasprict';
+    }
+    if($language==3){
+        $E='language_ruby';
+    }
+    if($language==4){
+        $E='language_python';
+    }
+    if($language==5){
+        $E='language_java';
+    }
+    if($language==6){
+        $E='language_go';
+    }
+    if($language==7){
+        $E='language_sql';
+    }
+    if($language==8){
+        $E='language_php';
+    }
+    if($language==9){
+        $E='language_c';
+    }
+    if($language==10){
+        $E='language_c++';
+    }
+    // echo $E;
+}else{
+    $E=0;
+}
+//気になるワード
+if (isset($_POST['text1'])){
+    // echo $_POST['text1'];
+    $keyword=$_POST['text1'];
+    // echo $keyword;
+}
+
+
+?>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/css/search.css">
@@ -25,6 +155,34 @@ $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
     </head>
     <body>
     <h1>テスト用表示画面</h1>
+    <?php foreach($aryList as $item){
+        //検索対象：webエンジニア
+        //山田太郎
+        //自己紹介：私はWebエンジニアです
+
+        if($item['work_experience']>=$C&&$item['work_experience']<$D){  
+            if($item['my_age']>=$A&&$item['my_age']<=$B){                    
+                if($E==0)
+    //    echo htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8') == '3年'; 
+    //    echo htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8'); 
+
+    //    htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8') // 3年
+
+        // 一行下のコメントの変数$itemでデータベースからlanguage_htmlから取得している。
+        // echo $item['language_html'];       
+        // langauge_htmlの値がある場合の人のみ取得する。　そのため、下記はnullじゃないものを取得している。
+        $result = true;        
+        if($E !== 0){
+            $result = $item[$E] != null; // エラー文 Notice: Undefined index: language_java in C:\xampp\htdocs\index.php on line 154
+        }
+
+        $keywordResult = true;
+        if(strpos($item['target'],$keyword) === false){　//含まれていない場合、if文の中を実行する。
+            //自己紹介のなかに$keywordが含まれてない場合
+            $keywordResult = false;
+        }
+        if($result && $keywordResult){ //左で表示するかどうか決めている。
+            ?>
                         <table border="1" width="80%" bordercolor="#green" bgcolor="#F5F5F5">
              <tr bgcolor="deepskyblue">
                  <td>ユーザ名</td>
@@ -104,6 +262,18 @@ $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
              </br>
              </table>
              <?php } 
-             ?> 
+            //  else{ echo "htmlではない";}
+            //  //　下の行は、langauge_cssを取得するために書く。htmlのelse文の後に書くことにより、if文を分けられる。
+            //  if($item['language_css'] != null){
+            //     echo 'cssは取得できています。';}
+            //       //　下記はlangauge_javasprictの取得を行う。
+            //       if($item['language_javasprict'] != null){
+            //         echo 'cssは取得できています。';}
+        }
+    }
+}      
+?> 
+    <div class="form-item">■ 名前</div>
+    <?php echo $_POST['name']; ?>
     </body>
     </html>
