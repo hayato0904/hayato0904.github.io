@@ -25,34 +25,6 @@ $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
     </head>
     <body>
     <h1>テスト用表示画面</h1>
-    <?php foreach($aryList as $item){
-        //検索対象：webエンジニア
-        //山田太郎
-        //自己紹介：私はWebエンジニアです
-
-        if($item['work_experience']>=$C&&$item['work_experience']<$D){  
-            if($item['my_age']>=$A&&$item['my_age']<=$B){                    
-                if($E==0)
-    //    echo htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8') == '3年'; 
-    //    echo htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8'); 
-
-    //    htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8') // 3年
-
-        // 一行下のコメントの変数$itemでデータベースからlanguage_htmlから取得している。
-        // echo $item['language_html'];       
-        // langauge_htmlの値がある場合の人のみ取得する。　そのため、下記はnullじゃないものを取得している。
-        $result = true;        
-        if($E !== 0){
-            $result = $item[$E] != null; // エラー文 Notice: Undefined index: language_java in C:\xampp\htdocs\index.php on line 154
-        }
-
-        $keywordResult = true;
-        if(strpos($item['target'],$keyword) === false){　//含まれていない場合、if文の中を実行する。
-            //自己紹介のなかに$keywordが含まれてない場合
-            $keywordResult = false;
-        }
-        if($result && $keywordResult){ //左で表示するかどうか決めている。
-            ?>
                         <table border="1" width="80%" bordercolor="#green" bgcolor="#F5F5F5">
              <tr bgcolor="deepskyblue">
                  <td>ユーザ名</td>
@@ -132,18 +104,6 @@ $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
              </br>
              </table>
              <?php } 
-            //  else{ echo "htmlではない";}
-            //  //　下の行は、langauge_cssを取得するために書く。htmlのelse文の後に書くことにより、if文を分けられる。
-            //  if($item['language_css'] != null){
-            //     echo 'cssは取得できています。';}
-            //       //　下記はlangauge_javasprictの取得を行う。
-            //       if($item['language_javasprict'] != null){
-            //         echo 'cssは取得できています。';}
-        }
-    }
-}      
-?> 
-    <div class="form-item">■ 名前</div>
-    <?php echo $_POST['name']; ?>
+             ?> 
     </body>
     </html>
