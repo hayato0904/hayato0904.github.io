@@ -1,7 +1,5 @@
 <?php
-// To Do WHEREを使って動かしたい
-// To Do ラジオボタンで単一選択する。　→　チェックボックスで複数選択する。
-
+// To Do WHERE
 //データベース接続
 $dsn = 'mysql:dbname=kakemachi;host=localhost';
 $user = 'root';
@@ -28,29 +26,24 @@ if (isset($_POST['experience'])){
     //echo $experience;
     $C=0;
     $D=0;
+    $targetexperiecnce = null;
     if($experience==0){
-        $C=$C+0;
-        $D=$D+1;
+        $targetexperiecnce = '未経験';
     }
     if($experience==1){
-        $C=$C+1;
-        $D=$D+2;
+        $targetexperiecnce = '1年目';
     }
     if($experience==2){
-        $C=$C+2;
-        $D=$D+3;
+        $targetexperiecnce = '2年目';
     }
     if($experience==3){
-        $C=$C+3;
-        $D=$D+4;
+        $targetexperiecnce = '3年目';
     }
     if($experience==4){
-        $C=$C+4;
-        $D=$D+5;
+        $targetexperiecnce = '4年目';
     }
     if($experience==5){
-        $C=$C+5;
-        $D=$D+101;
+        $targetexperiecnce = '5年以上';
     }
 }else{
     $C=-100;
@@ -137,16 +130,7 @@ if (isset($_POST['language'])){
     // echo $E;
 }else{
     $E=0;
-}
-//気になるワード
-if (isset($_POST['text1'])){
-    // echo $_POST['text1'];
-    $keyword=$_POST['text1'];
-    // echo $keyword;
-}
-
-
-?>
+} ?>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/css/search.css">
@@ -154,15 +138,9 @@ if (isset($_POST['text1'])){
         <title>ユーザー詳細情報画面</title>
     </head>
     <body>
-    <h1>テスト用表示画面</h1>
+    <h1>ユーザー詳細情報画面</h1>
     <?php foreach($aryList as $item){
-        //検索対象：webエンジニア
-        //山田太郎
-        //自己紹介：私はWebエンジニアです
-
-        if($item['work_experience']>=$C&&$item['work_experience']<$D){  
-            if($item['my_age']>=$A&&$item['my_age']<=$B){                    
-                if($E==0)
+        
     //    echo htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8') == '3年'; 
     //    echo htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8'); 
 
@@ -176,13 +154,11 @@ if (isset($_POST['text1'])){
             $result = $item[$E] != null; // エラー文 Notice: Undefined index: language_java in C:\xampp\htdocs\index.php on line 154
         }
 
-        $keywordResult = true;
-        if(strpos($item['target'],$keyword) === false){　//含まれていない場合、if文の中を実行する。
-            //自己紹介のなかに$keywordが含まれてない場合
-            $keywordResult = false;
-        }
-        if($result && $keywordResult){ //左で表示するかどうか決めている。
+        if($result){
+            // if else($item[$E == 0]){}
+            // echo 'htmlは表示されています。';
             ?>
+            
                         <table border="1" width="80%" bordercolor="#green" bgcolor="#F5F5F5">
              <tr bgcolor="deepskyblue">
                  <td>ユーザ名</td>
@@ -270,10 +246,6 @@ if (isset($_POST['text1'])){
             //       if($item['language_javasprict'] != null){
             //         echo 'cssは取得できています。';}
         }
-    }
-}      
-?> 
-    <div class="form-item">■ 名前</div>
-    <?php echo $_POST['name']; ?>
+        ?> 
     </body>
     </html>
