@@ -1,4 +1,24 @@
-
+<?php
+//サブミットボタンをクリックしたときにフォームに入力された値を受け取る部分。
+//　''で囲まれたusernameとpasswordはフォームの中のnameと一致している。
+if(isset($_POST['signin'])) {
+	$username = $_POST['username'];
+  $password = $_POST['password'];
+  try{
+    $db = new PDO('mysql:host=localhost; dbname=login'); // 切り取った　，'ユーザー名','パスワード'
+    $sql = 'insert into login table(username,password) values(?,?)';
+    $stmt = $db->prepare($sql);
+    $stmt->execute(array($username,$password));
+    $stmt = null;
+    $db = null;
+    header('Location: http://localhost/　　/');
+    exit;
+  }catch (PDOException $e){
+    echo $e->getMessage();
+    exit;
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
