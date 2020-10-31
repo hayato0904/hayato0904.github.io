@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .header{
-    background-color:rgb(197, 38, 38); 
+    background-color:#c52626; 
     height: 140px;
 
 }
@@ -8,7 +8,7 @@
     font-size: 40px;
     float:left;
     padding:15px 30px;
-    color:black;
+    color:rgb(24, 170, 24);
     height: 140px;
 }
 .main{
