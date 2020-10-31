@@ -16,7 +16,8 @@
   text-align: center;
 } 
  table{
-  margin-left: auto;margin-right: auto;
+  /* margin-left: auto;margin-right: auto; */
+  text-align: center;
 } 
 button{
   padding:20px;
