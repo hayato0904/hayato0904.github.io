@@ -2,14 +2,12 @@
 .header{
     background-color:#c52626; 
     height: 140px;
-
 }
 .header-logo{
     font-size: 40px;
     float:left;
     padding:15px 30px;
     color:rgb(24, 170, 24);
-    height: 140px;
 }
 main{
     text-align: center;
