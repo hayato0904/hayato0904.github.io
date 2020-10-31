@@ -9,9 +9,9 @@
     padding:15px 30px;
     color:rgb(24, 170, 24);
 }
-/* main{
-    text-align: center;
-} */
+main{
+  text-align: center;
+} 
   .copy-container h1{
     font-size: 100px;
 }
