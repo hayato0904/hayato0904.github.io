@@ -1,22 +1,26 @@
 <?php
 //サブミットボタンをクリックしたときにフォームに入力された値を受け取る部分。
 //　''で囲まれたusernameとpasswordはフォームの中のnameと一致している。
-if(isset($_POST['signin'])) {
-	$username = $_POST['username'];
+if(isset($_POST['signup'])) {
+	$mailaddress = $_POST['mailaddress'];
   $password = $_POST['password'];
   try{
-    $db = new PDO('mysql:host=localhost; dbname=login'); // 切り取った　，'ユーザー名','パスワード'
-    $sql = 'insert into login table(username,password) values(?,?)';
+    $dsn = 'mysql:dbname=kakemachi;host=localhost';
+    $user = 'root';
+    $password = 'Ha09041208!';
+    $db = new PDO($dsn,$user,$password);
+    $sql = 'insert into logininfo (mailaddress,password) values(?,?)';
     $stmt = $db->prepare($sql);
-    $stmt->execute(array($username,$password));
+    $stmt->execute(array($mailaddress,$password));
     $stmt = null;
     $db = null;
-    header('Location: http://localhost/　　/');
+    header('Location: http://localhost/index.php');
     exit;
   }catch (PDOException $e){
     echo $e->getMessage();
     exit;
   }
+  
 }
 ?>
 <!DOCTYPE html>
@@ -28,8 +32,8 @@ if(isset($_POST['signin'])) {
 </head>
 <body>
 	<h1>新規登録画面</h1>
-		<form action="" method="POST">
-			UserName<input type="text" name="username" value=""><br>
+		<form action="signup.php" method="POST"> 
+			mailaddress<input type="email" name="mailaddress" value=""><br>
 			Password<input type="password" name="password" value=""><br>
 			<input type="submit" name="signup" value="新規登録">
     </form>
