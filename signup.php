@@ -1,9 +1,12 @@
 <?php
 //サブミットボタンをクリックしたときにフォームに入力された値を受け取る部分。
 //　''で囲まれたusernameとpasswordはフォームの中のnameと一致している。
+//submitボタンのnameが「signup」になっている。
 if(isset($_POST['signup'])) {
 	$mailaddress = $_POST['mailaddress'];
   $password = $_POST['password'];
+  //データベース接続の処理
+  //headerで新規登録した後に、index.phpに画面遷移する。
   try{
     $dsn = 'mysql:dbname=kakemachi;host=localhost';
     $user = 'root';
