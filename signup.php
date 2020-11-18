@@ -12,9 +12,11 @@ if(isset($_POST['signup'])) {
     $user = 'root';
     $password = 'Ha09041208!';
     $db = new PDO($dsn,$user,$password);
-    $sql = 'insert into logininfo (mailaddress,password) values(?,?)';
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = 'insert into logininfo (id,mailaddress,password) values(?,?,?)';
     $stmt = $db->prepare($sql);
-    $stmt->execute(array($mailaddress,$password));
+    $id = NULL;
+    $flg = $stmt->execute(array($id,$mailaddress,$password));
     $stmt = null;
     $db = null;
     header('Location: http://localhost/index.php');
