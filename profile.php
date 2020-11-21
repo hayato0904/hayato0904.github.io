@@ -25,11 +25,97 @@ if (isset($_SESSION['EMAIL'])) {
        // ・・・この場合はusersテーブルととsyouhinテーブルのすべてのフィールドが表示される。
        //つまり下記はuserテーブルとlogininfoテーブルを結合しているのでuserテーブルだけselectしている。
        //なぜ全てのフィールドが表示されるといけないのか？それが分からない。
-　　　　//
         $stmt = $dbh->prepare('select user.* from user LEFT OUTER JOIN logininfo ON user.logininfo_id = logininfo.id  where mailaddress = ?');
         $stmt->execute([$_SESSION['EMAIL']]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-echo $result['user_name'];
+echo $result['<table border="1" width="80%" bordercolor="#green" bgcolor="#F5F5F5">
+<tr bgcolor="deepskyblue">
+    <td>ユーザ名</td>
+</tr>
+<tr>
+    <td><?php echo htmlspecialchars($item['user_name'],ENT_QUOTES,'UTF-8'); ?></td>
+</tr>
+<tr bgcolor="deepskyblue">
+    <td>希望する活動場所</td>
+</tr>
+<tr>
+    <td><?php echo htmlspecialchars($item['place'],ENT_QUOTES,'UTF-8'); ?></td>  
+</tr> 
+<tr bgcolor="deepskyblue">
+    <td>使用できるプログラミング言語</td>
+</tr>
+<tr>
+    <td>
+        <?php echo htmlspecialchars($item['language_html'].' ',ENT_QUOTES,'UTF-8'); ?>
+        <?php echo htmlspecialchars($item['language_css'].' ',ENT_QUOTES,'UTF-8'); ?>
+        <?php echo htmlspecialchars($item['language_php'].' ',ENT_QUOTES,'UTF-8'); ?>
+        <?php echo htmlspecialchars($item['language_javasprict'].' ',ENT_QUOTES,'UTF-8'); ?>
+        <?php echo htmlspecialchars($item['language_ruby'].' ',ENT_QUOTES,'UTF-8'); ?>
+        <?php echo htmlspecialchars($item['language_python'].' ',ENT_QUOTES,'UTF-8'); ?>
+        <?php echo htmlspecialchars($item['language_Java'].' ',ENT_QUOTES,'UTF-8'); ?>
+        <?php echo htmlspecialchars($item['language_Go'].' ',ENT_QUOTES,'UTF-8'); ?>
+        <?php echo htmlspecialchars($item['language_SQL'].' ',ENT_QUOTES,'UTF-8'); ?>
+        <?php echo htmlspecialchars($item['language_C'].' ',ENT_QUOTES,'UTF-8'); ?>
+        <?php echo htmlspecialchars($item['language_C++'].' ',ENT_QUOTES,'UTF-8'); ?> 
+    </td>
+</tr> 
+<tr bgcolor="deepskyblue">
+    <td>実務経験歴</td>
+</tr>
+<tr>
+    <td>
+        <?php echo htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8'); ?>
+    </td>  
+</tr> 
+<tr bgcolor="deepskyblue">
+    <td>自分の年齢</td>
+</tr>
+<tr>
+    <td>
+        <?php echo htmlspecialchars($item['my_age'],ENT_QUOTES,'UTF-8'); ?>
+    </td>  
+</tr> 
+<tr bgcolor="deepskyblue">
+    <td>相手の希望年齢</td>
+</tr>
+<tr>
+    <td>
+        <?php echo htmlspecialchars($item['you_hope_age_dont_worry'].' ',ENT_QUOTES,'UTF-8'); ?>
+        <?php echo htmlspecialchars($item['you_hope_age_10s'].' ',ENT_QUOTES,'UTF-8'); ?>
+        <?php echo htmlspecialchars($item['you_hope_age_early20s'].' ',ENT_QUOTES,'UTF-8'); ?>
+        <?php echo htmlspecialchars($item['you_hope_age_late20s'].' ',ENT_QUOTES,'UTF-8'); ?>
+        <?php echo htmlspecialchars($item['you_hope_age_early30s'].' ',ENT_QUOTES,'UTF-8'); ?>
+        <?php echo htmlspecialchars($item['you_hope_age_late30s'].' ',ENT_QUOTES,'UTF-8'); ?>
+        <?php echo htmlspecialchars($item['you_hope_age_40s'].' ',ENT_QUOTES,'UTF-8'); ?>
+    </td>  
+</tr> 
+<tr bgcolor="deepskyblue">
+    <td>目標</td>
+</tr>
+<tr>
+    <td>
+        <?php echo htmlspecialchars($item['target'],ENT_QUOTES,'UTF-8'); ?>
+    </td>  
+</tr>
+<tr bgcolor="deepskyblue">
+    <td>自己紹介</td>
+</tr>
+<tr>
+    <td>
+        <?php echo htmlspecialchars($item['self_introduction'],ENT_QUOTES,'UTF-8'); ?>
+    </td>  
+    </tr>
+<tr bgcolor="deepskyblue">
+    <td>Twitter</td>
+</tr>
+<tr>
+    <td>
+        <?php echo htmlspecialchars($item['twitter'],ENT_QUOTES,'UTF-8'); ?>
+    </td>  
+</tr>
+<br>
+</br>
+</table>'];
     } catch (\Exception $e) {
         echo $e->getMessage();
     }    
