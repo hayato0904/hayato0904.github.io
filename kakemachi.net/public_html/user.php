@@ -1,9 +1,9 @@
 <?php
 // To Do WHERE
 //データベース接続
-$dsn = "mysql:dbname=xs616244_kakemachi";
-$user = "xs616244_hayato";
-$password = "Ha09041208";
+$dsn = 'mysql:dbname=kakemachi;host=localhost';
+$user = 'root';
+$password = 'Ha09041208!';
 $dbh = new PDO($dsn,$user,$password);
 $sql = "SELECT * FROM user";
 $result = $dbh -> query($sql);

@@ -1,0 +1,35 @@
+ @charset "UTF-8";
+.header{
+    background-color:#0eb662; 
+    height: 140px;
+}
+.header-logo{
+    font-size: 40px;
+    float:left;
+    padding:15px 30px;
+    color:#000000;
+}
+ .main{
+  text-align: center;
+}  
+ .container{
+  text-align: center;
+} 
+ table{
+   margin-left: auto;margin-right: auto; 
+  text-align: center;
+} 
+button{
+  padding:20px;
+    margin-top:10px;
+    margin-bottom:30px;
+    width:400px;
+    border:1px solid #dee7ec;
+    font-size:18px;
+}
+input{
+  padding: 20px;
+  widows: 100%;
+  border:1px solid #555a5e;
+  font-size:25px;
+} 

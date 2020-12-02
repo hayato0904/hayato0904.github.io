@@ -104,7 +104,7 @@
             <input name="text1" id="text1" type="text">
         </form>
         <input type="submit" value="送信">
-      　<button type="button" onclick="location.href='http://kakemachi.net./index.php'">検索</button>
+      　<button type="button" onclick="location.href='http://localhost/index.php'">検索</button>
 
           <p>現在、全205件中205件がヒット！</p>
 

@@ -19,7 +19,7 @@ if(isset($_POST['signup'])) {
     $flg = $stmt->execute(array($id,$mailaddress,$password));
     $stmt = null;
     $db = null;
-    header('Location: http://kakemachi.net./index.php');
+    header('Location: http://localhost/index.php');
     exit;
   }catch (PDOException $e){
     echo $e->getMessage();
