@@ -1,10 +1,15 @@
 <?php
 // To Do WHERE
 //データベース接続
+// define('DB_USERNAME', 'xs616244_hayato');
+// define('DB_PASSWORD', 'Ha09041208');
+// define('DSN', 'mysql:host=mysql10093.xserver.jp; dbname=xs616244_kakemachi; charset=utf8');
+
 $dsn = "mysql:dbname=xs616244_kakemachi";
 $user = "xs616244_hayato";
 $password = "Ha09041208";
-$dbh = new PDO($dsn,$user,$password);
+$host = "mysql:host=mysql11093.xserver.jp";
+$dbh = new PDO($dsn,$user,$password,$host);
 $sql = "SELECT * FROM user";
 $result = $dbh -> query($sql);
 //クエリー失敗
