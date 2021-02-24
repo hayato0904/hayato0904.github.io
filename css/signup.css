@@ -1,53 +1,61 @@
 @charset "UTF-8";
-.header{
+.header
+{
   background-color:#09b944; 
   height: 70px;
 }
-.header-logo{
+.header-logo
+{
   font-size: 35px;
   float:left;
   padding:5px 30px;
   color:#000000;
 }
-
-.header a
+.container p
 {
-  font-size: 20px;
-}
-
-.container p{
   font-size: 15px;
   text-align: center;
 } 
 
-button{
-padding:20px;
+button
+{
+/* padding:20px; */
   margin-top:5px;
-  margin-bottom:30px;
-  width:400px;
-  border:1px solid #dee7ec;
-  font-size:18px;
+  /* margin-bottom:30px; */
+  /* width:400px; */
+  border:1px solid #555a5e;
+  font-size:15px;
 }
-input{
+input
+{
 border:1px solid #555a5e;
 font-size:15px;
 margin-top: 5px;
 } 
-.main{
+.main
+{
   text-align: center;
   font-size: 15px;
 }
-.main p{
+.main p
+{
   font-size: 15px;
   text-align: center;
 }
-.body{
+.body
+{
   overflow-x: hidden;
-  }
+}
 
-  .html{
+.html
+{
     overflow-x: hidden;
-    }
+}
+.ErrorMessage
+{
+  font-size: 15px;
+  color: crimson;
+}
 
  
 

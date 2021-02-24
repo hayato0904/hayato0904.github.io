@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+table{
+    margin-left: auto;margin-right: auto;
+}
+input{
+    padding:20px;
+    margin-top:10px;
+    margin-bottom:30px;
+    width:400px;
+    border:1px solid #446a7e;
+    font-size:18px;
+}
+.contents{
+    border: 2px solid;
+    border-color: #031de2;
+}
+.main{
+    text-align: center;}
