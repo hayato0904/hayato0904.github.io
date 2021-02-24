@@ -1,296 +1,140 @@
 <?php
-// To Do WHEREを使って動かしたい
-// To Do ラジオボタンで単一選択する。　→　チェックボックスで複数選択する。
-
-//データベース接続
-$dsn = 'mysql:dbname=kakemachi;host=localhost';
-$user = 'root';
-$password = 'Ha09041208!';
-$dbh = new PDO($dsn,$user,$password);
-$sql = "SELECT * FROM user";
-$result = $dbh -> query($sql);
-
-//クエリー失敗
-if(!$result) {
-    echo $dbh->error;
-    exit();
-}
-//レコード件数
-
-$row_cnt = $result->rowCount();
-///連想配列で取得
-
-$sth = $dbh -> query($sql);
-$aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
+session_start();
+$is_login = isset($_SESSION['id']) ? true : false;
 ?>
-
-<?php
-//　実務経験歴
-if (isset($_POST['experience'])){
-    //echo $_POST['experience'];
-    $experience=$_POST['experience'];
-    //echo $experience;
-    $C=0;
-    $D=0;
-    if($experience==0){
-        $C=$C+0;
-        $D=$D+1;
-    }
-    if($experience==1){
-        $C=$C+1;
-        $D=$D+2;
-    }
-    if($experience==2){
-        $C=$C+2;
-        $D=$D+3;
-    }
-    if($experience==3){
-        $C=$C+3;
-        $D=$D+4;
-    }
-    if($experience==4){
-        $C=$C+4;
-        $D=$D+5;
-    }
-    if($experience==5){
-        $C=$C+5;
-        $D=$D+101;
-    }
-}else{
-    $C=-100;
-    $D=100;
-}
-//　相手の年齢
-if(isset($_POST['check'])){
-    //echo $_POST['check'];
-    $check=$_POST['check'];
-    //echo $check;
-    $A=0;
-    $B=0;
-    if($check==0){
-        $A=$A+0;
-        $B=$B+100;
-    }
-    if($check==1){
-        $A=$A+10;
-        $B=$B+19;
-    }
-    if($check==2){
-        $A=$A+20;
-        $B=$B+25;
-    }
-    if($check==3){
-        $A=$A+26;
-        $B=$B+29;
-    }
-    if($check==4){
-        $A=$A+30;
-        $B=$B+35;
-    }
-    if($check==5){
-        $A=$A+36;
-        $B=$B+39;
-    }
-    if($check==6){
-        $A=$A+40;
-        $B=$B+100;
-    }
-}else{
-    $A=-100;
-    $B=100;
-}
-//　103,104行目を削除
-//echo $_POST['language'];
-//echo gettype($_POST['language']);
-if (isset($_POST['language'])){
-    $language=$_POST['language'];
-    //echo $language;
-    if($language==0){
-        $E='language_html';
-    }
-    if($language==1){
-        $E='language_css';
-    }
-    if($language==2){
-        $E='language_javasprict';
-    }
-    if($language==3){
-        $E='language_ruby';
-    }
-    if($language==4){
-        $E='language_python';
-    }
-    if($language==5){
-        $E='language_Java';
-    }
-    if($language==6){
-        $E='language_Go';
-    }
-    if($language==7){
-        $E='language_SQL';
-    }
-    if($language==8){
-        $E='language_php';
-    }
-    if($language==9){
-        $E='language_C';
-    }
-    if($language==10){
-        $E='language_C++';
-    }
-    // echo $E;
-}else{
-    $E=0;
-}
-
-//気になるワード
- //気になるワードをnullとする。そして
-$keyword=null;
-if (isset($_POST['text1'])){
-    // echo $_POST['text1'];
-    $keyword=$_POST['text1'];
-    // echo $keyword;
-}
-?>
+<!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="/css/search.css">
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-                <title>ユーザー詳細情報画面</title>
-                    </head>
-                        <body>
-                            <h1>テスト用表示画面</h1>
-                                <?php foreach($aryList as $item){
-                                    //検索対象：webエンジニア
-                                    //山内まりあ
-                                    //自己紹介：私はWebエンジニアです
-                                    if($item['work_experience']>=$C&&$item['work_experience']<$D){  
-                                        if($item['my_age']>=$A&&$item['my_age']<=$B){                    
-                                            //if($E==0)            
-                                            //    echo htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8') == '3年'; 
-                                            //    echo htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8'); 
-                                            //    htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8') // 3年
-                                            // 一行下のコメントの変数$itemでデータベースからlanguage_htmlから取得している。
-                                            // echo $item['language_html'];       
-                                            // langauge_htmlの値がある場合の人のみ取得する。　そのため、下記はnullじゃないものを取得している。
-                                            $result = true;
-                                            if($E !== 0){
-                                                $result = $item[$E] != null; // エラー文 Notice: Undefined index: language_java in C:\xampp\htdocs\index.php on line 154
-                                            }
+ <head>
+   <!-- 下記一行はスマホ版のサイズに合わせるコード。 -->
+ <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+ <link rel="stylesheet" type="text/css" href="http://kakemachi.net./css/index.css">
+<!-- 一行下のコードは動かなかったら削除する。 -->
+ <meta http-equiv="content-type" charset="utf-8">
+  <title>エンジニアマッチングサイト</title>
+ </head>
+<body>
 
-                                            $keywordResult =true;
-                                            if ($keyword !== '') {
-                                                if(strpos($item['target'],$keyword) === false) {
-                                                   $keywordResult = false;
-                                                }
-                                            }
+      <!--画面遷移-->
+      <div class="header">
+        <div class="header-logo">Kakemachi</div>
+        <div class="header-logo"><a href='http://kakemachi.net/signup.php'><img src="https://illalet.com/wp-content/uploads/2018/10/16_2_294.png" height="60px" width="60px"></a></div>
+      <?php if ($is_login):?>
+        <div class="header-logo"><a href='http://kakemachi.net/profile.php'><img src="https://illalet.com/wp-content/uploads/2018/10/16_2_278.png" height="60px" width="60px"></a></div>
+        <div class="header-logo"><a href='logout.php'><img src="https://cdn3.iconfinder.com/data/icons/round-icons-vol-2/512/Logout_exit-512.png" height="60px" width="60px"></a></div>
+      <?php else: ?>
+        <div class="header-logo"><a href='http://kakemachi.net/signup1.php'><img src="https://illalet.com/wp-content/uploads/illust/16_2_338.png" height="60px" width="60px"></a></div>
+      <?php endif;?>
+      </div>
 
-                                            //この上の場合に $item["target"] に$keywordが含まれているか判定するように修正できているのか？
-                                            //　10月24日 朝9時 keywordに値が入力されていたら、$keywordの値を出力する。入力されていなかったら、「入力されていない」と文字列を表示する。
-                                            if($result && $keywordResult){ //左で表示するかどうか決めている。
-                                      ?>
+      <!-- <div class="container">
+        <p>Kakemachiは駆け出しエンジニア同士を繋ぐマッチングサービスです。<br>様々なエンジニアのニーズにお応えできるサービスになっています。</br></p>
+      </div>  -->
+<!-- </body>
+</html> -->
 
-                                            <table border="1" width="80%" bordercolor="#green" bgcolor="#F5F5F5">
-                                                <tr bgcolor="deepskyblue">
-                                                    <td>ユーザ名</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><?php echo htmlspecialchars($item['user_name'],ENT_QUOTES,'UTF-8'); ?></td>
-                                                </tr>
-                                                <tr bgcolor="deepskyblue">
-                                                    <td>希望する活動場所</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><?php echo htmlspecialchars($item['place'],ENT_QUOTES,'UTF-8'); ?></td>  
-                                                </tr> 
-                                                <tr bgcolor="deepskyblue">
-                                                    <td>使用できるプログラミング言語</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <?php echo htmlspecialchars($item['language_html'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                        <?php echo htmlspecialchars($item['language_css'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                        <?php echo htmlspecialchars($item['language_php'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                        <?php echo htmlspecialchars($item['language_javasprict'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                        <?php echo htmlspecialchars($item['language_ruby'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                        <?php echo htmlspecialchars($item['language_python'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                        <?php echo htmlspecialchars($item['language_Java'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                        <?php echo htmlspecialchars($item['language_Go'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                        <?php echo htmlspecialchars($item['language_SQL'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                        <?php echo htmlspecialchars($item['language_C'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                        <?php echo htmlspecialchars($item['language_C++'].' ',ENT_QUOTES,'UTF-8'); ?> 
-                                                    </td>
-                                                </tr> 
-                                                <tr bgcolor="deepskyblue">
-                                                    <td>実務経験歴</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <?php echo htmlspecialchars($item['work_experience'],ENT_QUOTES,'UTF-8'); ?>
-                                                    </td>  
-                                                </tr> 
-                                                <tr bgcolor="deepskyblue">
-                                                    <td>自分の年齢</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <?php echo htmlspecialchars($item['my_age'],ENT_QUOTES,'UTF-8'); ?>
-                                                    </td>  
-                                                </tr> 
-                                                <tr bgcolor="deepskyblue">
-                                                    <td>相手の希望年齢</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <?php echo htmlspecialchars($item['you_hope_age_dont_worry'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                        <?php echo htmlspecialchars($item['you_hope_age_10s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                        <?php echo htmlspecialchars($item['you_hope_age_early20s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                        <?php echo htmlspecialchars($item['you_hope_age_late20s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                        <?php echo htmlspecialchars($item['you_hope_age_early30s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                        <?php echo htmlspecialchars($item['you_hope_age_late30s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                        <?php echo htmlspecialchars($item['you_hope_age_40s'].' ',ENT_QUOTES,'UTF-8'); ?>
-                                                    </td>  
-                                                </tr> 
-                                                <tr bgcolor="deepskyblue">
-                                                    <td>目標</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <?php echo htmlspecialchars($item['target'],ENT_QUOTES,'UTF-8'); ?>
-                                                    </td>  
-                                                </tr>
-                                                <tr bgcolor="deepskyblue">
-                                                    <td>自己紹介</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <?php echo htmlspecialchars($item['self_introduction'],ENT_QUOTES,'UTF-8'); ?>
-                                                    </td>  
-                                                    </tr>
-                                                <tr bgcolor="deepskyblue">
-                                                    <td>Twitter</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <?php echo htmlspecialchars($item['twitter'],ENT_QUOTES,'UTF-8'); ?>
-                                                    </td>  
-                                                </tr>
-                                                <br>
-                                                </br>
-                                            </table>   
-                                            <?php
-                                    //  else{ echo "htmlではない";}
-                                 //　下の行は、langauge_cssを取得するために書く。htmlのelse文の後に書くことにより、if文を分けられる。
-                                     //  if($item['language_css'] != null){
-                                     //     echo 'cssは取得できています。';}
-                                   //　下記はlangauge_javasprictの取得を行う。
-                                       //       if($item['language_javasprict'] != null){
-                                           //         echo 'cssは取得できています。';}
-                                }
-                            }
-                        }
-                    }
-                    ?> 
-                        
-                        </body>
-</html>
+　　 <div class="main">
+<p>Kakemachiは駆け出しエンジニア同士を繋ぐマッチングサービスです。<br>様々なエンジニアのニーズにお応えできるサービスになっています。</br></p>
+          <!-- <p>ユーザー検索</p> -->
+      <form method="post" action="searchresult.php">
+      　<h1 style="background-color: #09b944;">活動場所</h1>
+        <?php 
+          $types = array('北海道','青森','秋田','岩手','山形','宮城','福島','茨城','栃木','群馬','埼玉','千葉','東京','神奈川','新潟','長野','山梨','静岡','富山','岐阜','愛知','石川','福井','滋賀','三重','京都','奈良','大阪','和歌山','兵庫','鳥取','岡山','島根','広島','山口','香川','徳島','愛媛','高知','福岡','佐賀','大分','熊本','宮崎','鹿児島','長崎','沖縄');
+         ?>
+          <select name="place">
+          <option value="未選択">全指定</option>
+          <?php
+          foreach ($types as $type) {
+              echo "<option value='{$type}'>{$type}</option>";
+            }
+            ?>
+            </select>
+        <h1 style="background-color: #09b944;">使用できるプログラミング言語</h1>
+       
+
+        <input type="checkbox" name="language[]" value="0">
+        <label>HTML</label>
+
+        <input type="checkbox" name="language[]" value="1">
+        <label>CSS</label>
+
+        <input type="checkbox" name="language[]" value="2">
+        <label>JavaScript</label>
+
+        <input type="checkbox" name="language[]" value="3">
+        <label>Ruby</label>
+
+        <input type="checkbox" name="language[]" value="4">
+        <label>Python</label>
+
+        <input type="checkbox" name="language[]" value="5">
+        <label>Java</label>
+       
+        <input type="checkbox" name="language[]" value="6">
+        <label>Go</label>
+
+        <input type="checkbox" name="language[]" value="7">
+        <label>SQL</label>
+        
+        <input type="checkbox" name="language[]" value="8">
+        <label>PHP</label>
+
+        <input type="checkbox" name="language[]" value="9">
+        <label>C言語</label>
+
+        <input type="checkbox" name="language[]" value="10">
+        <label>C++</label>
+
+        
+
+<!-- 送信ボタンがあった場所 -->
+        
+        <h1 style="background-color: #09b944;">実務経験歴</h1>
+
+        <input type="radio" name="experience[]" value="0">
+        <label>未経験</label>
+
+        <input type="radio" name="experience[]" value="1">
+        <label>1年目</label>
+
+        <input type="radio" name="experience[]" value="2">
+        <label>2年目</label>
+
+        <input type="radio" name="experience[]" value="3">
+        <label>3年目</label>
+
+        <input type="radio" name="experience[]" value="4">
+        <label>4年目</label>
+
+        <input type="radio" name="experience[]" value="5">
+        <label>5年以上</label>
+
+
+        <h1 style="background-color: #09b944;">相手の年齢</h1>
+
+        <input type="radio" name="age[]" value="1">
+        <label>10代</label>
+
+        <input type="radio" name="age[]" value="2">
+        <label>20代前半</label>
+
+        <input type="radio" name="age[]" value="3">
+        <label>20代後半</label>
+
+        <input type="radio" name="age[]" value="4">
+        <label>30代前半</label>
+
+        <input type="radio" name="age[]" value="5">
+        <label>30代後半</label>
+
+        <input type="radio" name="age[]" value="6">
+        <label>40代以上</label>
+        
+        <h1 style="background-color: #09b944;">気になるワード</h1>
+        <!-- <form name="form"> -->
+            <input name="text1" id="text1" type="text">
+        <!-- </form> -->
+        <h1 style="background-color: #09b944;">検索ボタン</h1>
+        <input type="submit" value="検索">
+        </form>
+</body>
+</html> 

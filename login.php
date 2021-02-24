@@ -5,9 +5,9 @@ if (isset($_POST['mailaddress'])) {
   session_start();
   //DB内でPOSTされたメールアドレスを検索する処理。
   try {
-    $dsn = 'mysql:dbname=kakemachi;host=localhost';
-    $user = 'root';
-    $password = 'Ha09041208!';
+    $dsn = "mysql:host=mysql10093.xserver.jp;dbname=xs616244_kakemachi;charset=utf8";
+$user = "xs616244_hayato";
+$password = "Ha09041208";
     $dbh = new PDO($dsn,$user,$password);
     $stmt = $dbh->prepare('select * from logininfo where mailaddress = ?');
     $stmt->execute([$_POST['mailaddress']]); //emailの内容を一行上に送信している。その結果を$rowに詰めている。

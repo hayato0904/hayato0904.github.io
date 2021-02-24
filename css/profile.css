@@ -1,55 +1,53 @@
 @charset "UTF-8";
 .header{
-    background-color:#91a09b; 
-    height: 90px;
+  background-color:#09b944; 
+  height: 70px;
 }
+.header-logo{
+  font-size: 35px;
+  float:left;
+  padding:5px 30px;
+  color:#000000;
+}
+
+.container p{
+  font-size: 15px;
+  text-align: center;
+} 
+
+button{
+    /* padding:20px; */
+      margin-top:5px;
+      /* margin-bottom:30px; */
+      /* width:400px; */
+      border:1px solid #555a5e;
+      font-size:15px;
+    }
+    input{
+        border:1px solid #555a5e;
+        font-size:15px;
+        margin-top: 5px;
+        text-align: center;
+        } 
 .main{
-    text-align: center;
+  text-align: center;
+  font-size: 15px;
 }
-.contents{
-    border: 2px solid;
-    border-color: #031de2;
+.main p{
+  font-size: 15px;
+  text-align: center;
 }
-.contents p{
-    font-size: 25px;
-}
-input{
-    padding: 20px;
-    border:1px solid #555a5e;
-    font: size 25px;
-}
-.contentsmain h1 {
-    font-size: 25px;
-    color: white;
-}
-img{
-    width: 400px;
-    height: auto;
-}
-table{
-    margin-left: auto;margin-right: auto;
-}
-.contentsunder{
-    text-align: center;
-}
-button{ 
-        padding:20px; 
-        margin-top:10px; 
-        margin-bottom:30px; 
-        width:400px;  
-        border:1px solid #446a7e; 
-        font-size:18px; 
-    }
-    .header-logo{ 
-        font-size: 40px; 
-        float:left; 
-        padding:20px 40px; 
-    }
-    .contents h1{
-        font-size: 25px;
-        color: white;
+.body{
+  overflow-x: hidden;
+  }
+
+  .html{
+    overflow-x: hidden;
     }
 
-    .contents p{
-        font-size: 25px;
-    }
+
+
+
+
+
+

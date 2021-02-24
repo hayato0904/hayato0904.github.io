@@ -6,11 +6,17 @@
 // define('DSN', 'mysql:host=mysql10093.xserver.jp; dbname=xs616244_kakemachi; charset=utf8');
 
 //$dsn = 'mysql:host=mysql000.db.sakura.ne.jp;dbname=example_php;charset=utf8';
+
+//下記3行ははデバックしているであろうコード
+// if (isset($_POST['experience'])){
+//     //echo $_POST['experience'];
+//     $experience=$_POST['experience'];
+// echo $keyword;
  
 $dsn = "mysql:host=mysql10093.xserver.jp;dbname=xs616244_kakemachi;charset=utf8";
 $user = "xs616244_hayato";
 $password = "Ha09041208";
-$dbh = new PDO($dsn,$user,$password,$host);
+$dbh = new PDO($dsn,$user,$password);
 $sql = "SELECT * FROM user";
 $result = $dbh -> query($sql);
 //クエリー失敗
