@@ -1,14 +1,15 @@
 <?php
+include('libs/config.php');
 //To Do ログアウトの処理。
 //下記1文はもしmailaddressに値がある場合、if文の処理を行うコードである。signup.phpから送信されている。
 if (isset($_POST['mailaddress'])) {
   session_start();
   //DB内でPOSTされたメールアドレスを検索する処理。
   try {
-    $dsn = "mysql:host=mysql10093.xserver.jp;dbname=xs616244_kakemachi;charset=utf8";
-$user = "xs616244_hayato";
-$password = "Ha09041208";
-    $dbh = new PDO($dsn,$user,$password);
+    $dsn = 'mysql:dbname=kakemachi;host=localhost';
+    $user = 'root';
+    $password = 'Ha09041208!';
+    $dbh = new PDO($dsn, $user, $password);
     $stmt = $dbh->prepare('select * from logininfo where mailaddress = ?');
     $stmt->execute([$_POST['mailaddress']]); //emailの内容を一行上に送信している。その結果を$rowに詰めている。
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -22,8 +23,13 @@ $password = "Ha09041208";
   }
   //パスワード確認後sessionにメールアドレスを渡す。$_POSTで送信された内容と、$rowでもともとDBにある情報が正しいか確認している。
   if ($_POST['password'] === $row['password']) {
-    session_regenerate_id(true); //session_idを新しく生成し、置き換える
-    $_SESSION['EMAIL'] = $row['mailaddress']; 
+    session_regenerate_id(true);
+    $_SESSION['USER_ID'] = $row['id'];
+    //session_idを新しく生成し、置き換える
+    $_SESSION['EMAIL'] = $row['mailaddress'];
+    var_dump($_SESSION);
+    exit;
+
     // $_SESSIONで保存している。それにより他の画面でも確認出来る。おそらく、$rowはデータベースで接続したlogin.phpでしか見れないから。
     //遷移する
     echo 'ログインしました';
@@ -36,26 +42,29 @@ $password = "Ha09041208";
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="/css/profile.css">
-        <title>駆け出しエンジニアマッチングサイト</title>
-    </head>
-    <body>
-      <div class ="login"> 
-      <!-- form　actionで送信する画面を決めて、method=POSTで受け渡しの処理をしている。 -->
-      <!-- login.phpのPOSTにformを渡す。 -->
-        <form action='login.php' method='POST'>
-              <h1 style="background-color: black;">ログイン</h1>
-              <p>ログインするメールアドレス</p>
-              <!-- input typeは書式の形。おそらく、emailだとメールの形になっていないとはじかれる。 -->
-              <!-- nameはPOSTされる際に入力する値。 -->
-              <input type="email" name="mailaddress" placeholder="登録済みのメールアドレス">
-              <p>ログインするパスワード</p>
-              <input type ="password" name="password" placeholder="登録済みのパスワード">
-              <p><button type='submit'>ログイン</button></p>
-              <div class="header-logo"><a href='http://kakemachi.net./profile.php'><img src="https://illalet.com/wp-content/uploads/2018/10/16_2_278.png" height="120px" width="120px"></a></div>
-              <p><button onclick="return confirm('ログアウトします。')">ログアウト</button></p>
-        </form>
-        </div>
-    </body>
-</html>  
+
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/profile.css">
+  <title>駆け出しエンジニアマッチングサイト</title>
+</head>
+
+<body>
+  <div class="login">
+    <!-- form　actionで送信する画面を決めて、method=POSTで受け渡しの処理をしている。 -->
+    <!-- login.phpのPOSTにformを渡す。 -->
+    <form action='login.php' method='POST'>
+      <h1 style="background-color: black;">ログイン</h1>
+      <p>ログインするメールアドレス</p>
+      <!-- input typeは書式の形。おそらく、emailだとメールの形になっていないとはじかれる。 -->
+      <!-- nameはPOSTされる際に入力する値。 -->
+      <input type="email" name="mailaddress" placeholder="登録済みのメールアドレス">
+      <p>ログインするパスワード</p>
+      <input type="password" name="password" placeholder="登録済みのパスワード">
+      <p><button type='submit'>ログイン</button></p>
+      <div class="header-logo"><a href='<?=APPLICATION_PATH?>/profile.php'><img src="https://illalet.com/wp-content/uploads/2018/10/16_2_278.png" height="120px" width="120px"></a></div>
+      <p><button onclick="return confirm('ログアウトします。')">ログアウト</button></p>
+    </form>
+  </div>
+</body>
+
+</html>
